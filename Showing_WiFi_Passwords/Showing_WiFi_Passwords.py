@@ -3,7 +3,6 @@ script = "netsh wlan show profile > txt.txt"
 os.system(script)
 
 networks = []
-
 f = open("txt.txt", "r+")
 for line in f:
     line = line.strip()
@@ -14,7 +13,6 @@ for line in f:
 f.close()
 # print("networks : ", networks)
 
-
 folders = []
 for network in networks:
     network_name = network.replace(" ", "_")
@@ -22,9 +20,7 @@ for network in networks:
     script = f'netsh wlan show profile "{network}" key=clear > pass_{network_name}.txt'
     # print(script)
     os.system(script)
-
 # print("folders : ", folders)
-
 
 passwords = {}
 for fn in folders:
@@ -44,17 +40,8 @@ print("=====================")
 print(passwords)
 print("=====================")
 
-# folders.append("txt.txt")
-
-
 script = f"Del txt.txt "
 for folder in folders:
     script+= folder + " "
 
-# print(script)
 os.system(script)
-
-
-
-
-
