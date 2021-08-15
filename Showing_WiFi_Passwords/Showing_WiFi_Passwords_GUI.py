@@ -8,7 +8,6 @@ def get_password():
     os.system(script)
 
     networks = []
-
     f = open("txt.txt", "r+")
     for line in f:
         line = line.strip()
@@ -27,7 +26,6 @@ def get_password():
         script = f'netsh wlan show profile "{network}" key=clear > pass_{network_name}.txt'
         # print(script)
         os.system(script)
-
     # print("folders : ", folders)
 
 
@@ -49,45 +47,24 @@ def get_password():
     print(passwords)
     print("=====================")
 
-    # folders.append("txt.txt")
-
 
     script = f"Del txt.txt "
     for folder in folders:
         script+= folder + " "
-
-    # print(script)
     os.system(script)
-
-
-
-    # print("=====================")
-    # print("len(passwords) : ", len(passwords))
-    # print("=====================")
-    # print("passwords.keys : ", list(passwords.keys()))
-    # print("=====================")
-    # print("passwords.values : ", list(passwords.values()))
-    # print("=====================")
-    # print("passwords.items : ", list(passwords.items()))
-    # print("=====================")
 
     Add_row(list(passwords.keys()), list(passwords.values()), len(passwords))
 
 
-
-
-
-# GUI setting :
-
+# GUI settings : 
 window = tk.Tk()
 window.title(" كلمات سر الشبكات ")
 window.geometry('700x500+200+150')           # we need to update the geometry in Add_row() Function
 
 
-# Adding title
-title_label = ttk.Label(window, text=" Wi-Fi كلمات سر شبكات  ", font=["bold", 20])           # we need to change the line (Bold and the size ...)
+# Adding title 
+title_label = ttk.Label(window, text=" Wi-Fi كلمات سر شبكات  ", font=["bold", 20])           # we need to change the line (Bold and the size and the color ...)
 title_label.grid(row=0, column=0, columnspan=4)
-
 
 
 def Add_row(name, password, n):
@@ -101,7 +78,6 @@ def Add_row(name, password, n):
         network_name_label.grid(row=2+i, column=1)
 
 
-
 # Create Labels
 network_name_label = ttk.Label(window, text=" اسم الشبكة ", font=["bold", 20])
 network_pass_label = ttk.Label(window, text=" كلمة السر ", font=["bold", 20])
@@ -113,4 +89,3 @@ network_name_label.grid(row=1, column=1)
 get_password()
 
 window.mainloop()
-
